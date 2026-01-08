@@ -9,6 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@motionone/react": "^10.16.4",
+    "@tabler/icons-react": "^3.36.1",
+    "framer-motion": "^12.24.11",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3"
