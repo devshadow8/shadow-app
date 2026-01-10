@@ -9,9 +9,9 @@ import { IconMenu, IconX } from "@tabler/icons-react";
 const navItems = [
   { name: "Home", link: "/" },
   { name: "About", link: "/about-us" },
-  { name: "Services", link: "/services" },
-  { name: "Courses", link: "/certification" },
-  // { name: "Gallery", link: "/gallery" },
+  { name: "Courses", link: "/courses" },
+ { name: "Gallery", link: "/gallery" },
+
 ];
 
 const particlePositions = [
