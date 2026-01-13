@@ -1,67 +1,64 @@
-import { Target, CheckCircle, Lightbulb, Handshake, Heart, Zap, Users, TrendingUp, Award } from 'lucide-react';
-
-
+import { Users, Award, TrendingUp, CheckCircle, Heart, Lightbulb, Handshake, Zap, Target, Sparkles } from "lucide-react";
 const stats = [
-    { number: '3000+', label: 'Students Trained', icon: Users },
-    { number: '95%', label: 'Success Rate', icon: TrendingUp },
-    { number: '100+', label: 'Corporate Partners', icon: Handshake },
-    { number: '8', label: 'Years Experience', icon: Award }
-  ];
+  { icon: Users, number: "5000+", label: "Students Trained" },
+  { icon: Award, number: "95%", label: "Placement Rate" },
+  { icon: TrendingUp, number: "50+", label: "Corporate Partners" },
+  { icon: CheckCircle, number: "100+", label: "Success Stories" }
+];
 
-  const values = [
-    {
-      icon: Target,
-      title: 'Student Success',
-      desc: 'Your career growth and personal development are our top priorities. We measure success through your achievements.',
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      icon: CheckCircle,
-      title: 'Integrity',
-      desc: 'Maintaining the highest standards of honesty and transparency in every interaction with students and partners.',
-      color: 'from-purple-500 to-pink-500'
-    },
-    {
-      icon: Lightbulb,
-      title: 'Innovation',
-      desc: 'Continuously evolving our teaching methodologies to stay ahead of industry trends and provide cutting-edge training.',
-      color: 'from-orange-500 to-red-500'
-    },
-    {
-      icon: Handshake,
-      title: 'Collaboration',
-      desc: 'Fostering a collaborative learning environment where teamwork drives collective growth and success.',
-      color: 'from-green-500 to-emerald-500'
-    },
-    {
-      icon: Heart,
-      title: 'Passion',
-      desc: 'Driven by genuine passion for teaching and commitment to making a positive impact on every student\'s journey.',
-      color: 'from-rose-500 to-pink-500'
-    },
-    {
-      icon: Zap,
-      title: 'Excellence',
-      desc: 'Striving for excellence in everything from curriculum design to student support and comprehensive career guidance.',
-      color: 'from-yellow-500 to-orange-500'
-    }
-  ];
+const values = [
+  { 
+    icon: Heart, 
+    title: "Excellence", 
+    desc: "We strive for excellence in every aspect of training and development",
+    color: "from-red-500 to-pink-500"
+  },
+  { 
+    icon: Lightbulb, 
+    title: "Innovation", 
+    desc: "Constantly evolving our methods to meet industry demands",
+    color: "from-yellow-500 to-orange-500"
+  },
+  { 
+    icon: Handshake, 
+    title: "Integrity", 
+    desc: "Building trust through honest and transparent practices",
+    color: "from-blue-500 to-cyan-500"
+  },
+  { 
+    icon: Zap, 
+    title: "Empowerment", 
+    desc: "Enabling individuals to reach their full potential",
+    color: "from-purple-500 to-pink-500"
+  },
+  { 
+    icon: Target, 
+    title: "Focus", 
+    desc: "Goal-oriented approach to ensure measurable success",
+    color: "from-green-500 to-emerald-500"
+  },
+  { 
+    icon: Sparkles, 
+    title: "Quality", 
+    desc: "Maintaining highest standards in education and mentorship",
+    color: "from-indigo-500 to-purple-500"
+  }
+];
 
-  const team = [
-    {
-      name: 'Oves Shaikh',
-      role: 'CEO',
-      desc: 'Visionary leader with 5+ years of experience in corporate training and career coaching.',
-      gradient: 'from-blue-600 to-purple-600',
-      image: '/team/oves-shaikh.jpg' // Add your image path here
-    },
-    {
-      name: 'Maseera Shaikh',
-      role: 'COO',
-      desc: 'Expert in communication skills, personality development, and interview preparation.',
-      gradient: 'from-purple-600 to-pink-600',
-      image: '/team/maseera-shaikh.jpg' // Add your image path here
-    }
-  ];
+const team = [
+  {
+    name: "Oves Shaikh",
+    role: "Founder & CEO",
+    desc: "Visionary leader with 15+ years of experience in career development and training",
+    gradient: "from-blue-500 to-purple-500"
+    
+  },
+  {
+    name: "Maseera Shaikh",
+    role: "COO",
+    desc: "Expert trainer specializing in communication skills and personality development",
+    gradient: "from-purple-500 to-pink-500"
+  }
+];
 
-  export {stats, values, team};
+export {stats, values, team};

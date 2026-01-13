@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client"
 import React, { useState, useEffect } from 'react';
 import { 
@@ -11,7 +12,7 @@ import {
   IndianRupee
 } from 'lucide-react';
 import { testimonials, achievements } from '../data/testimonialsData/testimonial';
-
+import Link from "next/link";
 const TestimonialsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -35,7 +36,7 @@ const TestimonialsSection = () => {
   const current = testimonials[currentTestimonial];
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-24 px-4 sm:px-6 lg:px-8 overflow-hidden" id = "testimonials">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.1),transparent_50%)]"></div>
       <div className="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
@@ -69,7 +70,7 @@ const TestimonialsSection = () => {
           </div>
           
           <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Listen to our students'{' '}
+            Listen to our student&apos;s{' '}
             <span className="text-emerald-400 font-semibold">success stories</span> and learn how they{' '}
             <span className="text-blue-400 font-semibold">transformed their careers</span>
           </p>
@@ -234,6 +235,7 @@ const TestimonialsSection = () => {
           <p className="text-gray-400 mb-6 text-lg">
             You can be our next success story! 🌟
           </p>
+          <Link href="/contact" passHref>
           <button className="group relative px-12 py-6 bg-gradient-to-r from-emerald-600 via-blue-600 to-violet-600 text-white font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/50 text-lg">
             <span className="relative z-10 flex items-center justify-center gap-3">
               Book Free Career Counseling
@@ -241,6 +243,7 @@ const TestimonialsSection = () => {
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-violet-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
+          </Link>
         </div>
       </div>
 

@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client"
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, CheckCircle2, Star, Zap } from 'lucide-react';
 import {features } from '../data/WhyChooseUs/data'
-
+import Link from "next/link"
 const WhyChooseUs = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -165,6 +166,7 @@ const WhyChooseUs = () => {
 
         {/* CTA Section */}
         <div className={`text-center mt-16 transition-all duration-1000 delay-900 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <Link href="/contact" passHref>
           <button className="group relative px-12 py-6 bg-gradient-to-r from-emerald-600 via-blue-600 to-violet-600 text-white font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/50 text-lg">
             <span className="relative z-10 flex items-center justify-center gap-3">
               <Zap className="w-5 h-5" />
@@ -174,6 +176,7 @@ const WhyChooseUs = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-violet-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500"></div>
           </button>
+          </Link>
         </div>
       </div>
 

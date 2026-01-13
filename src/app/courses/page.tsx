@@ -1,7 +1,7 @@
-"use client";
+ "use client";
 import React, { useState, useEffect } from 'react';
 import { Check, X, ChevronDown, ChevronUp, Sparkles, Target, Award, TrendingUp, Clock, BookOpen, Users, MessageCircle, Globe, ThumbsUp, Headphones, Search, FileText, Mic } from 'lucide-react';
-
+import Link from "next/link";
 import { courses, comparisonFeatures, faqs } from '../data/courseData/course';
 const CoursesPage = () => {
   const [activeCard, setActiveCard] = useState<number | null>(null);
@@ -293,9 +293,11 @@ const CoursesPage = () => {
                 </div>
 
                 {/* CTA */}
+                <Link href= "/contact" passHref>
                 <button className={`w-full bg-gradient-to-r ${course.color} text-white py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95`}>
                   Enroll Now
                 </button>
+                </Link>
               </div>
             </div>
           ))}

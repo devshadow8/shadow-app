@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/set-state-in-effect  */
 "use client"
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Sparkles, Users, TrendingUp, Award, ChevronRight } from 'lucide-react';
-
+import Link from "next/link"
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(true);
@@ -38,6 +39,9 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, [services.length]);
 
+ useEffect(() => {
+    setIsVisible(true);
+  }, []);
   const stats = [
     { number: '3000+', label: 'Successful Placements', icon: Users, delay: '0s' },
     { number: '95%', label: 'Success Rate', icon: Award, delay: '0.2s' },
@@ -127,6 +131,7 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className={`flex flex-col sm:flex-row gap-4 justify-center mb-20 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+             <Link href="contact" passHref>
             <button className="group relative px-10 py-5 bg-gradient-to-r from-emerald-600 via-blue-600 to-violet-600 text-white font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/50 text-lg">
               <span className="relative z-10 flex items-center justify-center gap-2">
                 Book Free Consultation
@@ -135,12 +140,15 @@ const HeroSection = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-violet-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
             </button>
-            
+            </Link>
+             
+             <Link href= "testimonials" passHref>
             <button className="px-10 py-5 bg-white/5 backdrop-blur-md border-2 border-emerald-400/30 text-white font-bold rounded-2xl hover:bg-white/10 hover:border-emerald-400/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 text-lg group">
               <Users className="w-5 h-5 text-emerald-400 group-hover:scale-110 transition-transform" />
               Success Stories
               <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
+            </Link>
           </div>
 
           {/* Stats Section */}

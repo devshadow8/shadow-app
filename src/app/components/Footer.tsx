@@ -1,24 +1,25 @@
 "use client"
 import React, { useState } from 'react';
 import { MapPin, Mail, User, Clock, Phone, Facebook, Twitter, Instagram, Linkedin, Youtube, Send, ChevronRight } from 'lucide-react';
-
+import Image from 'next/image';
+import Link from 'next/link';
 const Footer = () => {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const [email, setEmail] = useState('');
 
   const quickLinks = [
     { name: 'Home', href: '#' },
-    { name: 'Who Can Join', href: '#' },
-    { name: 'Why Choose Us', href: '#' },
-    { name: 'Contact', href: '#' }
+    { name: 'Who Can Join', href: '/who-join' },
+    { name: 'Why Choose Us', href: '/why-choose-us' },
+    { name: 'Contact', href: '/contact' }
   ];
 
   const courses = [
-    { name: 'Shadow Rise', href: '#' },
-    { name: 'Shadow Prime', href: '#' },
-    { name: 'Shadow Forever', href: '#' },
-    { name: 'Corporate Training', href: '#' },
-    { name: 'Personality Development', href: '#' }
+    { name: 'Shadow Rise', href: '/courses' },
+    { name: 'Shadow Prime', href: '/courses' },
+    { name: 'Shadow Forever', href: '/courses' },
+    { name: 'Corporate Training', href: 'courses' },
+    { name: 'Personality Development', href: '/courses' }
   ];
 
   const socialLinks = [
@@ -92,12 +93,22 @@ const Footer = () => {
             {/* Company Info */}
             <div className="space-y-6">
               <div className="group cursor-pointer">
-                <h2 className="text-3xl font-black mb-4 relative inline-block">
-                  <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent group-hover:scale-105 inline-block transition-transform duration-300">
-                    Shadow Recruiters
-                  </span>
-                  <div className="absolute -bottom-1 left-0 w-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:w-full transition-all duration-500 rounded-full"></div>
-                </h2>
+               
+<h2 className="mb-4 relative inline-block group">
+          <Link href="/">
+            <Image
+              src="/images/shadow_logo.png"
+              alt="Logo"
+              width={80}
+              height={80}
+              className="h-20 w-20 rounded-xl shadow-lg ring-2 ring-blue-500/20"
+              priority
+            />
+          </Link>
+  
+  <div className="absolute -bottom-1 left-0 w-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:w-full transition-all duration-500 rounded-full"></div>
+</h2>
+
                 <p className="text-gray-400 leading-relaxed">
                   Premium Training & Development Institute focused on building communication, confidence, personality, and career readiness for students, job seekers, and professionals.
                 </p>
