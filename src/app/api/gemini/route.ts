@@ -184,7 +184,7 @@ Assistant:
       return NextResponse.json({ success: false, error: "Gemini API request failed" }, { status: 500 });
     }
 
-    let data: any;
+    let data: { candidates?: Array<{ content?: { parts?: Array<{ text: string }> } }> };
     try {
       data = JSON.parse(geminiText);
     } catch {
@@ -193,17 +193,18 @@ Assistant:
     }
 
     const output =
-      data?.candidates?.[0]?.content?.parts?.map((p: any) => p.text).join("") ?? "";
+      data?.candidates?.[0]?.content?.parts?.map((p) => p.text).join("") ?? "";
 
     return NextResponse.json({
       success: true,
       message: output.trim() || "Please rephrase your question or submit an inquiry on the Contact page.",
       timestamp: new Date().toISOString(),
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("ShadowGuide API error:", error);
+    const errorMessage = error instanceof Error ? error.message : "Something went wrong";
     return NextResponse.json(
-      { success: false, error: error?.message || "Something went wrong" },
+      { success: false, error: errorMessage },
       { status: 500 }
     );
   }
