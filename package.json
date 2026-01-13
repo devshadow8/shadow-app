@@ -9,7 +9,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@motionone/react": "^10.16.4",
     "@tabler/icons-react": "^3.36.1",
     "framer-motion": "^12.24.11",
     "lucide-react": "^0.562.0",
