@@ -1,76 +1,74 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { sendEmail } from '../../lib/sendEmail';
+
+// app/api/contact/route.ts
+import { NextRequest, NextResponse } from "next/server";
+import connectDB from "../../lib/mongodb";
+import Contact from "../../models/contact";
+import { sendEmail } from "../../lib/sendEmail";
 
 export async function POST(request: NextRequest) {
   try {
-    // Parse the request body
     const body = await request.json();
-    
-    // Validate required fields
-    const { name, email, phone, course, trainer, message } = body;
-    
+    const { name, email, phone, company, course, trainer, message } = body;
+
     if (!name || !email || !phone || !course || !message) {
-      return NextResponse.json(
-        { error: 'Missing required fields' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: 'Invalid email format' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Invalid email format" }, { status: 400 });
     }
 
-    // Validate phone number (10 digits)
+    const cleanPhone = String(phone).replace(/\s/g, "");
     const phoneRegex = /^[0-9]{10}$/;
-    if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
-      return NextResponse.json(
-        { error: 'Invalid phone number. Must be 10 digits' },
-        { status: 400 }
-      );
+    if (!phoneRegex.test(cleanPhone)) {
+      return NextResponse.json({ error: "Invalid phone number. Must be 10 digits" }, { status: 400 });
     }
 
-    // Validate course selection
-    const validCourses = ['Shadow Rise', 'Shadow Prime', 'Shadow Forever'];
+    const validCourses = ["Shadow Rise", "Shadow Prime", "Shadow Forever"];
     if (!validCourses.includes(course)) {
-      return NextResponse.json(
-        { error: 'Invalid course selection' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Invalid course selection" }, { status: 400 });
     }
 
-    // Send email
+    // 1) Store in DB
+    await connectDB();
+    const saved = await Contact.create({
+      name,
+      email,
+      phone: cleanPhone,
+      company: company || "",
+      course,
+      trainer: trainer || "Oves Shaikh",
+      message,
+      status: "new",
+    });
+
+    // 2) Send email to HR + auto reply to user
     await sendEmail({
       name,
       email,
-      phone,
-      company: body.company || '',
+      phone: cleanPhone,
+      company: company || "",
       course,
-      trainer: trainer || 'Oves Shaikh',
+      trainer: trainer || "Oves Shaikh",
       message,
     });
 
-    // Return success response
     return NextResponse.json(
-      { 
-        message: 'Contact form submitted successfully',
-        success: true 
-      },
+      { success: true, message: "Submitted successfully", id: saved._id },
       { status: 200 }
     );
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    console.error("Contact API error:", {
+      message: error?.message,
+      code: error?.code,
+      response: error?.response,
+      stack: error?.stack,
+    });
 
-  } catch (error) {
-    console.error('Error processing contact form:', error);
-    
     return NextResponse.json(
-      { 
-        error: 'Failed to send email. Please try again later.',
-        success: false
-      },
+      { success: false, error: "Failed to submit. Please try again later." },
       { status: 500 }
     );
   }
