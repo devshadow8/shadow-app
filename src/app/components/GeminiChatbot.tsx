@@ -115,7 +115,7 @@ export default function GeminiChatbot() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-white font-semibold text-sm">Shadow AI</h3>
+                <h3 className="text-white font-semibold text-sm">Shadow Chatbot</h3>
                 <p className="text-white/80 text-[10px]">Powered by Google</p>
               </div>
             </div>
