@@ -418,12 +418,16 @@ const CoursesPage = () => {
             <p className="text-xl text-white/90 mb-8">Join hundreds of successful students who have transformed their careers with Shadow Recruiters</p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href= "/contact">
               <button className="px-8 py-4 bg-white text-purple-600 rounded-xl font-semibold hover:scale-105 transition-transform duration-300 hover:shadow-2xl">
                 Enroll Today
               </button>
+              </Link>
+              <Link href= "/contact">
               <button className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-xl font-semibold hover:scale-105 transition-transform duration-300 hover:bg-white/20">
                 Book Free Consultation
               </button>
+              </Link>
             </div>
           </div>
         </div>

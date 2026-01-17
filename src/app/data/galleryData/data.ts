@@ -7,7 +7,7 @@ import { Users, TrendingUp, Award, Briefcase } from 'lucide-react';
       description: 'Interactive learning sessions with personalized attention', 
       category: 'Training Sessions', 
       color: 'from-blue-500 to-cyan-500',
-      image: '/images/poster1.jpg' // Apni image ka path yahan add karein
+      image: '/images/poster1.jpg'
     },
     { 
       id: 2, 
@@ -15,7 +15,7 @@ import { Users, TrendingUp, Award, Briefcase } from 'lucide-react';
       description: 'Developing effective communication skills', 
       category: 'Workshops', 
       color: 'from-purple-500 to-pink-500',
-      image: '/images/poster3.jpg' // Apni image ka path yahan add karein
+      image: '/images/poster3.jpg'
     },
     { 
       id: 3, 
@@ -23,7 +23,7 @@ import { Users, TrendingUp, Award, Briefcase } from 'lucide-react';
       description: 'Celebrating student achievements and success', 
       category: 'Student Achievements', 
       color: 'from-green-500 to-teal-500',
-      image: '/images/poster4.jpg' // Apni image ka path yahan add karein
+      image: '/images/poster4.jpg' 
     },
     { 
       id: 4, 
@@ -31,7 +31,7 @@ import { Users, TrendingUp, Award, Briefcase } from 'lucide-react';
       description: 'Building confidence and professional presence', 
       category: 'Training Sessions', 
       color: 'from-orange-500 to-red-500',
-      image: '/images/poeter5.jpg' // Apni image ka path yahan add karein
+      image: '/images/blogs4.png'
     },
     { 
       id: 5, 
@@ -39,7 +39,7 @@ import { Users, TrendingUp, Award, Briefcase } from 'lucide-react';
       description: 'Learning from experienced professionals', 
       category: 'Events', 
       color: 'from-indigo-500 to-purple-500',
-      image: '/images/gallery/expert-talk.jpg' // Apni image ka path yahan add karein
+      image: '/images/blogs5.png' 
     },
     { 
       id: 6, 
@@ -47,7 +47,7 @@ import { Users, TrendingUp, Award, Briefcase } from 'lucide-react';
       description: 'Realistic interview practice with feedback', 
       category: 'Training Sessions', 
       color: 'from-pink-500 to-rose-500',
-      image: '/images/gallery/mock-interviews.jpg' // Apni image ka path yahan add karein
+      image: '/images/blogs6.png'
     },
     { 
       id: 7, 
@@ -55,7 +55,7 @@ import { Users, TrendingUp, Award, Briefcase } from 'lucide-react';
       description: 'Mastering the art of effective participation', 
       category: 'Workshops', 
       color: 'from-cyan-500 to-blue-500',
-      image: '/images/gallery/group-discussions.jpg' // Apni image ka path yahan add karein
+      image: '/images/blogs7.png' 
     },
     { 
       id: 8, 
@@ -63,7 +63,7 @@ import { Users, TrendingUp, Award, Briefcase } from 'lucide-react';
       description: 'Our students securing dream jobs', 
       category: 'Student Achievements', 
       color: 'from-yellow-500 to-orange-500',
-      image: '/images/gallery/placement-success.jpg' // Apni image ka path yahan add karein
+      image: '/images/blogs8.png' 
     }
   ];
 

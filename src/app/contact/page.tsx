@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import {contactInfo, socialLinks, faqs} from "../data/contactData/contact"
+import Link from "next/link";
 import { Phone, Mail, MapPin, Clock, Send, MessageSquare, User, Building, BookOpen, AlertCircle, CheckCircle, ChevronDown, Globe, HelpCircle } from 'lucide-react';
 const ContactPage = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -477,12 +478,16 @@ const ContactPage = () => {
             <p className="text-xl text-white/90 mb-8">Join hundreds of successful professionals who have transformed their careers with Shadow Recruiters</p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href= "/contact">
               <button className="px-8 py-4 bg-white text-purple-600 rounded-xl font-semibold hover:scale-105 transition-transform duration-300 hover:shadow-2xl">
                 Enroll Today
               </button>
+              </Link>
+              <Link href= "/contact">
               <button className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-xl font-semibold hover:scale-105 transition-transform duration-300 hover:bg-white/20">
                 Book Free Demo
               </button>
+              </Link>
             </div>
           </div>
         </div>
