@@ -130,9 +130,9 @@ const HeroSection = () => {
           </div>
 
           {/* CTA Buttons */}
-          <div className={`flex flex-col sm:flex-row gap-4 justify-center mb-20 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+<div className={`flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center mb-20 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
              <Link href="contact" passHref>
-            <button className="group relative px-10 py-5 bg-gradient-to-r from-emerald-600 via-blue-600 to-violet-600 text-white font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/50 text-lg">
+            <button className="group relative w-full sm:w-auto px-10 py-5 bg-gradient-to-r from-emerald-600 via-blue-600 to-violet-600 text-white font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/50 text-lg">
               <span className="relative z-10 flex items-center justify-center gap-2">
                 Book Free Consultation
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
@@ -143,7 +143,7 @@ const HeroSection = () => {
             </Link>
              
              <Link href= "testimonials" passHref>
-            <button className="px-10 py-5 bg-white/5 backdrop-blur-md border-2 border-emerald-400/30 text-white font-bold rounded-2xl hover:bg-white/10 hover:border-emerald-400/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 text-lg group">
+<button className="w-full sm:w-auto px-6 sm:px-10 py-4 sm:py-5 bg-white/5 backdrop-blur-md border-2 border-emerald-400/30 text-white font-bold rounded-2xl hover:bg-white/10 hover:border-emerald-400/50 transition-all duration-300 sm:hover:scale-105 flex items-center justify-center gap-2 text-base sm:text-lg group whitespace-nowrap">
               <Users className="w-5 h-5 text-emerald-400 group-hover:scale-110 transition-transform" />
               Success Stories
               <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

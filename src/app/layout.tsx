@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 // Metadata
 export const metadata: Metadata = {
-  title: "Shadow recruiters Pune - Top Tech Talent Acquisition",
-  description: "Shadow Recruiters - Your Gateway to Top Tech Talent",
+  title: "modern recruitment agency in Pune",
+  description: "At Shadow Recruiter, we help companies hire smarter, faster, and better. As a modern recruitment agency in Pune, we connect the right talent with the right opportunities.",
 };
 
 export default function RootLayout({
