@@ -249,20 +249,23 @@ const AboutPage = () => {
                 Our Story
               </h2>
             </div>
-            <p className="text-xl text-gray-300 leading-relaxed mb-6">
+            <div className="text-xl text-gray-300 leading-relaxed mb-6">
+            <p>
               At Shadow Recruiter, we help companies hire smarter, faster, and
               better. As a modern recruitment agency in Pune, we connect the
               right talent with the right opportunities, whether you&apos;re a
-              startup, a growing enterprise, or an established organization.
-              <p className="text-xl text-gray-300 leading-relaxed">
+              startup, a growing enterprise, or an established organization. </p>
+
+              <div className="text-xl text-gray-300 leading-relaxed"> 
+              <p>
                 Our recruitment approach blends industry expertise, human
                 insight, and data-driven hiring to ensure every placement adds
                 real value. Our recruitment consultants work closely with
                 employers to understand job roles, company culture, and future
                 goals, helping us recommend candidates who are both skilled and
-                culturally aligned.
-              </p>
-            </p>
+                culturally aligned. </p>
+              </div>
+            </div>
             <p className="text-xl text-gray-300 leading-relaxed">
               Shadow Recruiters is a premium Training & Development Institute
               based in Pune, dedicated to building communication, confidence,

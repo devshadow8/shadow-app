@@ -1,17 +1,25 @@
+/* eslint-disable react-hooks/set-state-in-effect */
+
 "use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { IconMenu, IconX } from "@tabler/icons-react";
+import { IconMenu, IconX, IconChevronDown } from "@tabler/icons-react";
+
+const servicesDropdown = [
+  { name: "Bulk / Volume Hiring", link: "/services/bulk_hiring" },
+  { name: "RPO (End-to-End Hiring)", link: "/services/rpo" },
+  { name: "Onboarding Support", link: "/services/onboarding-support" },
+];
 
 const navItems = [
   { name: "Home", link: "/" },
   { name: "About", link: "/about-us" },
+  { name: "Services", link: "/services", dropdown: servicesDropdown },
   { name: "Courses", link: "/courses" },
- { name: "Gallery", link: "/gallery" },
-
+  { name: "Gallery", link: "/gallery" },
 ];
 
 const particlePositions = [
@@ -30,18 +38,27 @@ export default function NavigationBar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
-  // useEffect(() => {
-  //   setIsClient(true);
-  // }, []);
+  // Desktop dropdown state
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+
+  // Mobile dropdown state
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
 
   useEffect(() => {
-    if (!isClient) return;
-    const handleScroll = () => setIsScrolled(window.scrollY > 0);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isClient]);
+    setIsClient(true);
+  }, []);
 
-  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 0);
+    handleScroll(); // initial
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+    setIsMobileServicesOpen(false);
+  };
 
   return (
     <div
@@ -51,7 +68,7 @@ export default function NavigationBar() {
           : "bg-slate-900/80 backdrop-blur-md"
       }`}
     >
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-blue-950/50 to-slate-900 opacity-80" />
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/40 via-blue-950/20 to-slate-900/40" />
 
       {isClient && (
         <div className="absolute inset-0 overflow-hidden">
@@ -87,16 +104,75 @@ export default function NavigationBar() {
           />
         </Link>
 
-        <div className="flex space-x-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.link}
-              className="text-slate-200 hover:text-white font-semibold px-3 py-2 rounded-lg hover:bg-slate-800/50 transition"
-            >
-              {item.name}
-            </Link>
-          ))}
+        <div className="flex space-x-8 items-center">
+          {navItems.map((item) => {
+            if (item.dropdown) {
+              return (
+                <div
+                  key={item.name}
+                  className="relative"
+                  onMouseEnter={() => setIsServicesOpen(true)}
+                  onMouseLeave={() => setIsServicesOpen(false)}
+                >
+                  <button
+                    type="button"
+                    className="text-slate-200 hover:text-white font-semibold px-3 py-2 rounded-lg hover:bg-slate-800/50 transition flex items-center gap-1"
+                  >
+                    {item.name}
+                    <IconChevronDown
+                      size={18}
+                      className={`transition-transform ${
+                        isServicesOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+
+                  <AnimatePresence>
+                    {isServicesOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute left-0 mt-2 w-64 rounded-xl bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 shadow-2xl overflow-hidden"
+                      >
+                        <div className="p-2">
+                          {/* <Link
+                            href={item.link}
+                            className="block px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-slate-800/60 transition font-semibold"
+                          >
+                            
+                          </Link> */}
+
+                          <div className="h-px bg-slate-700/50 my-2" />
+
+                          {item.dropdown.map((sub) => (
+                            <Link
+                              key={sub.name}
+                              href={sub.link}
+                              className="block px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-slate-800/60 transition"
+                            >
+                              {sub.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            }
+
+            return (
+              <Link
+                key={item.name}
+                href={item.link}
+                className="text-slate-200 hover:text-white font-semibold px-3 py-2 rounded-lg hover:bg-slate-800/50 transition"
+              >
+                {item.name}
+              </Link>
+            );
+          })}
         </div>
 
         <Link href="/contact">
@@ -129,6 +205,7 @@ export default function NavigationBar() {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="text-white"
+            aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <IconX size={28} /> : <IconMenu size={28} />}
           </button>
@@ -142,16 +219,69 @@ export default function NavigationBar() {
               exit={{ height: 0, opacity: 0 }}
               className="mt-4 bg-slate-800/95 rounded-xl p-4 space-y-3"
             >
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.link}
-                  onClick={closeMobileMenu}
-                  className="block text-slate-200 hover:text-white font-semibold"
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navItems.map((item) => {
+                if (item.dropdown) {
+                  return (
+                    <div key={item.name} className="space-y-2">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setIsMobileServicesOpen((prev) => !prev)
+                        }
+                        className="w-full flex items-center justify-between text-slate-200 hover:text-white font-semibold"
+                      >
+                        <span>{item.name}</span>
+                        <IconChevronDown
+                          size={18}
+                          className={`transition-transform ${
+                            isMobileServicesOpen ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+
+                      <AnimatePresence>
+                        {isMobileServicesOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="pl-3 space-y-2 overflow-hidden"
+                          >
+                            <Link
+                              href={item.link}
+                              onClick={closeMobileMenu}
+                              className="block text-slate-300 hover:text-white"
+                            >
+                              All Services
+                            </Link>
+                            {item.dropdown.map((sub) => (
+                              <Link
+                                key={sub.name}
+                                href={sub.link}
+                                onClick={closeMobileMenu}
+                                className="block text-slate-300 hover:text-white"
+                              >
+                                {sub.name}
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.link}
+                    onClick={closeMobileMenu}
+                    className="block text-slate-200 hover:text-white font-semibold"
+                  >
+                    {item.name}
+                  </Link>
+                );
+              })}
 
               <Link href="/contact" onClick={closeMobileMenu}>
                 <button className="w-full mt-4 py-3 rounded-xl font-bold text-white bg-gradient-to-r from-blue-500 to-cyan-500">
