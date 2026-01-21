@@ -11,7 +11,7 @@ import { IconMenu, IconX, IconChevronDown } from "@tabler/icons-react";
 const servicesDropdown = [
   { name: "Bulk / Volume Hiring", link: "/services/bulk_hiring" },
   { name: "RPO (End-to-End Hiring)", link: "/services/rpo" },
-  { name: "Onboarding Support", link: "/services/onboarding-support" },
+  { name: "Onboarding Support", link: "/services/onboarding" },
 ];
 
 const navItems = [
@@ -247,13 +247,7 @@ export default function NavigationBar() {
                             exit={{ height: 0, opacity: 0 }}
                             className="pl-3 space-y-2 overflow-hidden"
                           >
-                            <Link
-                              href={item.link}
-                              onClick={closeMobileMenu}
-                              className="block text-slate-300 hover:text-white"
-                            >
-                              All Services
-                            </Link>
+                           
                             {item.dropdown.map((sub) => (
                               <Link
                                 key={sub.name}
