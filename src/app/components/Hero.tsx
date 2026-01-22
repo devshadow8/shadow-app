@@ -76,24 +76,28 @@ const HeroSection = () => {
   ];
 
   return (
-    <div className="relative min-h-screen bg-slate-950 overflow-hidden py-10">
-      {/* Background Video with Better Overlay */}
-      <div className="absolute inset-0 z-0">
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-        >
-          <source src="/videos/banner.mp4" type="video/mp4" />
-        </video>
+     <div className="relative bg-slate-950 overflow-hidden py-10">
+    <div className="relative min-h-[92svh] sm:min-h-screen py-10">  
+      
+      {/* Background Video */}
+<div className="absolute inset-0 z-0">
+  <video
+    className="absolute inset-0 w-full h-full object-cover object-center scale-[1.15] sm:scale-100"
+    autoPlay
+    loop
+    muted
+    playsInline
+    preload="metadata"
+    poster="/images/banner-poster.jpg"
+  >
+    <source src="/videos/banner.mp4" type="video/mp4" />
+  </video>
 
-        {/* Lighter Overlay for Clearer Video */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/70 to-slate-950/85" />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/40 via-transparent to-slate-950/40" />
-      </div>
+  {/* Mobile lighter overlay + desktop slightly darker */}
+  <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/55 to-slate-950/75 sm:from-slate-950/80 sm:via-slate-950/70 sm:to-slate-950/85" />
+  <div className="absolute inset-0 bg-gradient-to-r from-slate-950/30 via-transparent to-slate-950/30 sm:from-slate-950/40 sm:to-slate-950/40" />
+</div>
+
 
       {/* Reduced Animated Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/5 via-blue-600/5 to-violet-600/5 z-[1]"></div>
@@ -277,6 +281,7 @@ const HeroSection = () => {
           animation: slideUp 2.5s ease-in-out;
         }
       `}</style>
+    </div>
     </div>
   );
 };

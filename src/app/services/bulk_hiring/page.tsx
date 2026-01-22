@@ -247,33 +247,36 @@ const BulkHiringPage = () => {
       </section>
 
       {/* What is Bulk Hiring */}
-      <section className="relative py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-12 border border-white/20 shadow-2xl">
-            <div className="flex items-start gap-6">
-              <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center flex-shrink-0">
-                <Target className="w-10 h-10 text-white" />
-              </div>
-              <div>
-                <h2 className="text-4xl font-black text-white mb-6">
-                  What is Bulk / Volume Hiring?
-                </h2>
-                <p className="text-lg text-gray-300 leading-relaxed">
-                  Bulk hiring means recruiting a large number of candidates in a
-                  short timeline, usually for customer support, sales,
-                  operations, and back-office processes. At{" "}
-                  <span className="font-bold text-yellow-300">
-                    Shadow Recruiter
-                  </span>
-                  , we combine AI-powered sourcing, rapid screening, and strong
-                  follow-up so your hiring targets close faster with better
-                  quality.
-                </p>
-              </div>
+          <section className="relative py-12 sm:py-16 md:py-24 lg:py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 border border-white/20 shadow-2xl">
+          <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5 md:gap-6">
+            {/* Icon */}
+            <div className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl md:rounded-2xl flex items-center justify-center flex-shrink-0">
+              <Target className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 text-white" />
+            </div>
+            
+            {/* Content */}
+            <div className="flex-1">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-black text-white mb-3 sm:mb-4 md:mb-5 lg:mb-6">
+                What is Bulk / Volume Hiring?
+              </h2>
+              <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed">
+                Bulk hiring means recruiting a large number of candidates in a
+                short timeline, usually for customer support, sales,
+                operations, and back-office processes. At{" "}
+                <span className="font-bold text-yellow-300">
+                  Shadow Recruiter
+                </span>
+                , we combine AI-powered sourcing, rapid screening, and strong
+                follow-up so your hiring targets close faster with better
+                quality.
+              </p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* Roles - Modern Grid */}
       <section className="relative py-32 bg-slate-900">
