@@ -33,6 +33,8 @@ const particlePositions = [
   { left: 65, top: 45 },
 ];
 
+const isHome = (href: string) => href === "/";
+
 export default function NavigationBar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -93,6 +95,7 @@ export default function NavigationBar() {
 
       {/* Desktop */}
       <div className="hidden lg:flex items-center justify-between max-w-7xl mx-auto px-6 py-4 relative z-10">
+        {/* Home should NOT open in new tab */}
         <Link href="/">
           <Image
             src="/images/shadow_logo.png"
@@ -106,6 +109,8 @@ export default function NavigationBar() {
 
         <div className="flex space-x-8 items-center">
           {navItems.map((item) => {
+            const newTab = !isHome(item.link);
+
             if (item.dropdown) {
               return (
                 <div
@@ -137,19 +142,15 @@ export default function NavigationBar() {
                         className="absolute left-0 mt-2 w-64 rounded-xl bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 shadow-2xl overflow-hidden"
                       >
                         <div className="p-2">
-                          {/* <Link
-                            href={item.link}
-                            className="block px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-slate-800/60 transition font-semibold"
-                          >
-                            
-                          </Link> */}
-
                           <div className="h-px bg-slate-700/50 my-2" />
 
+                          {/* Dropdown items should open in new tab */}
                           {item.dropdown.map((sub) => (
                             <Link
                               key={sub.name}
                               href={sub.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
                               className="block px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-slate-800/60 transition"
                             >
                               {sub.name}
@@ -167,6 +168,8 @@ export default function NavigationBar() {
               <Link
                 key={item.name}
                 href={item.link}
+                target={newTab ? "_blank" : undefined}
+                rel={newTab ? "noopener noreferrer" : undefined}
                 className="text-slate-200 hover:text-white font-semibold px-3 py-2 rounded-lg hover:bg-slate-800/50 transition"
               >
                 {item.name}
@@ -175,14 +178,16 @@ export default function NavigationBar() {
           })}
         </div>
 
-        <Link href="/contact">
+        <Link href="/contact"
+        //  target="_blank" 
+         rel="noopener noreferrer">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-6 py-3 rounded-xl font-bold text-white"
             style={{
               background: "linear-gradient(135deg, #3b82f6, #06b6d4)",
-            }}
+            }} 
           >
             Contact Us
           </motion.button>
@@ -192,6 +197,7 @@ export default function NavigationBar() {
       {/* Mobile */}
       <div className="lg:hidden px-4 py-4 relative z-10">
         <div className="flex items-center justify-between">
+          {/* Home should NOT open in new tab */}
           <Link href="/">
             <Image
               src="/images/shadow_logo.png"
@@ -220,14 +226,14 @@ export default function NavigationBar() {
               className="mt-4 bg-slate-800/95 rounded-xl p-4 space-y-3"
             >
               {navItems.map((item) => {
+                const newTab = !isHome(item.link);
+
                 if (item.dropdown) {
                   return (
                     <div key={item.name} className="space-y-2">
                       <button
                         type="button"
-                        onClick={() =>
-                          setIsMobileServicesOpen((prev) => !prev)
-                        }
+                        onClick={() => setIsMobileServicesOpen((prev) => !prev)}
                         className="w-full flex items-center justify-between text-slate-200 hover:text-white font-semibold"
                       >
                         <span>{item.name}</span>
@@ -247,11 +253,12 @@ export default function NavigationBar() {
                             exit={{ height: 0, opacity: 0 }}
                             className="pl-3 space-y-2 overflow-hidden"
                           >
-                           
                             {item.dropdown.map((sub) => (
                               <Link
                                 key={sub.name}
                                 href={sub.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 onClick={closeMobileMenu}
                                 className="block text-slate-300 hover:text-white"
                               >
@@ -269,6 +276,8 @@ export default function NavigationBar() {
                   <Link
                     key={item.name}
                     href={item.link}
+                    target={newTab ? "_blank" : undefined}
+                    rel={newTab ? "noopener noreferrer" : undefined}
                     onClick={closeMobileMenu}
                     className="block text-slate-200 hover:text-white font-semibold"
                   >
@@ -277,7 +286,12 @@ export default function NavigationBar() {
                 );
               })}
 
-              <Link href="/contact" onClick={closeMobileMenu}>
+              <Link
+                href="/contact"
+                // target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeMobileMenu}
+              >
                 <button className="w-full mt-4 py-3 rounded-xl font-bold text-white bg-gradient-to-r from-blue-500 to-cyan-500">
                   Contact Us
                 </button>

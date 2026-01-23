@@ -32,10 +32,10 @@ const contactInfo = [
   ];
 
   const socialLinks = [
-    { icon: Linkedin, link: 'https://linkedin.com', color: 'hover:text-blue-400' },
+    { icon: Linkedin, link: 'https://www.linkedin.com/in/arbaz-shaikh-828882237?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app', color: 'hover:text-blue-400' },
     { icon: Twitter, link: 'https://twitter.com', color: 'hover:text-cyan-400' },
-    { icon: Facebook, link: 'https://facebook.com', color: 'hover:text-blue-500' },
-    { icon: Instagram, link: 'https://instagram.com', color: 'hover:text-pink-400' }
+    { icon: Facebook, link: 'https://www.facebook.com/profile.php?id=61587175342194', color: 'hover:text-blue-500' },
+    { icon: Instagram, link: 'https://www.instagram.com/shadowrecruiter_/', color: 'hover:text-pink-400' }
   ];
 
   const faqs = [

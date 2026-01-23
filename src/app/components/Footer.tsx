@@ -23,10 +23,10 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: '#', color: 'hover:text-blue-500', bg: 'group-hover:from-blue-500' },
-    { icon: Instagram, href: '#', color: 'hover:text-pink-500', bg: 'group-hover:from-pink-500' },
+    { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61587175342194', color: 'hover:text-blue-500', bg: 'group-hover:from-blue-500' },
+    { icon: Instagram, href: 'https://www.instagram.com/shadowrecruiter_/', color: 'hover:text-pink-500', bg: 'group-hover:from-pink-500' },
     { icon: Twitter, href: '#', color: 'hover:text-sky-500', bg: 'group-hover:from-sky-500' },
-    { icon: Linkedin, href: '#', color: 'hover:text-blue-600', bg: 'group-hover:from-blue-600' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/arbaz-shaikh-828882237?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app', color: 'hover:text-blue-600', bg: 'group-hover:from-blue-600' },
     { icon: Youtube, href: '#', color: 'hover:text-red-500', bg: 'group-hover:from-red-500' }
   ];
 
